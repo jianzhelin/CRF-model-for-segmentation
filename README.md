@@ -3,15 +3,15 @@ A supervisingly easy way to conduct CRF for post processing your initial segment
 
 You may use this method combined with: Nvidia-semantic-segmentation/UNet/HRNet/PSPNet etc.
 
---The input you need:
---initial segmentation results (RGB labels)
---original input images
+- The input you need:
+- initial segmentation results (RGB labels)
+- original input images
 
---The output will be the new segmentation mask
+- The output will be the new segmentation mask
 
---the only package you need is pydensecrf, you may consider install this with:
---pip install cython
---pip install git+https://github.com/lucasb-eyer/pydensecrf.git
+- the only package you need is pydensecrf, you may consider install this with:
+- pip install cython
+- pip install git+https://github.com/lucasb-eyer/pydensecrf.git
 
---the parameter you need to fine tune: rgb_image_test.py, line 14: gt_prob. 
---The changes needed: rgb_image_test.py, line 45: set the num_classes, line 56-57: change paths. 
+- the parameter you need to fine tune: rgb_image_test.py, line 14: gt_prob. 
+- The changes needed: rgb_image_test.py, line 45: set the num_classes, line 56-57: change paths. 
