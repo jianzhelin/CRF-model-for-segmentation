@@ -33,14 +33,6 @@ gaussian_pairwise = potentials.GaussianPotential(
 # =============================================================================
 #zero_unsure:  whether zero is a class, if its False, it means zero canb be any of other classes
 # =============================================================================
-# crf = crf_model.DenseCRF(
-#     num_classes = 3,
-#     zero_unsure = True,              # The number of output classes
-#     unary_potential=unary,
-#     pairwise_potentials=[bilateral_pairwise, gaussian_pairwise],
-#     use_2d = 'rgb-2d'                #'rgb-1d' or 'rgb-2d' or 'non-rgb'
-# )
-# =============================================================================
 crf = crf_model.DenseCRF(
     num_classes = 7,
     zero_unsure = False,              # The number of output classes
@@ -53,33 +45,9 @@ crf = crf_model.DenseCRF(
 # =============================================================================
 # Load image and probabilities
 # =============================================================================
-image = imread('/home/jianzhe/CRF-semantic-segmentation/best_images/_2eb24BRlq6tpw-IqYm6KQ_left_input.png')
-probabilities = imread('/home/jianzhe/CRF-semantic-segmentation/best_images/_2eb24BRlq6tpw-IqYm6KQ_left_prediction.png')
+image = imread('path/to/your/image/.png')
+probabilities = imread('path/to/your/rgb/label/.png')
 
-# [h, w, c] = colors.shape
-# probabilities = np.zeros((h, w, 1))
-# for i in range(0, h):
-#      for j in range(0, w):
-#          if (colors[i,j,:] == [255, 97, 39]).all():
-#              probabilities[i,j,0] = 1
-#          elif (colors[i,j,:] == [244, 35,232]).all():
-#              probabilities[i,j,0] = 2    
-#          elif (colors[i,j,:] == [102,102,153]).all():
-#              probabilities[i,j,0] = 3 
-#          elif (colors[i,j,:] == [85, 85, 85]).all():
-#              probabilities[i,j,0] = 4 
-#          elif (colors[i,j,:] == [204,153,102]).all():
-#              probabilities[i,j,0] = 5
-#          elif (colors[i,j,:] == [128, 64,128]).all():
-#              probabilities[i,j,0] = 6
-#          elif (colors[i,j,:] == [0,  0,  0]).all():
-#              probabilities[i,j,0] = 7  
-#          else:
-#              break
-# =============================================================================
-# Set the CRF model
-# =============================================================================
-#label_source: whether label is from softmax, or other type of label.
 crf.set_image(
     image=image,
     probabilities=probabilities,
@@ -94,7 +62,7 @@ crf.set_image(
 crf.perform_inference(20)  # The CRF model will restart run.
 new_mask80 = crf.segmentation_map
 print(crf.kl_divergence)
-cv2.imwrite("/home/jianzhe/CRF-semantic-segmentation/mask.jpg", new_mask80)
+cv2.imwrite("path/to/save/the/new/mask.jpg", new_mask80)
 
 
 
