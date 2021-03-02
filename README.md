@@ -15,5 +15,5 @@ You may use this method combined with: Nvidia-semantic-segmentation/UNet/HRNet/P
   - `pip install cython`
   - `pip install git+https://github.com/lucasb-eyer/pydensecrf.git`
 # Fine-tuning/Changes you need to do
-- the parameter you need to fine tune: rgb_image_test.py, line 14: gt_prob. 
+- the parameter you need to fine tune: rgb_image_test.py, line 14: gt_prob, line 94, number of iterations (20)
 - The changes needed: rgb_image_test.py, line 45: set the num_classes, line 56-57: change paths. 
